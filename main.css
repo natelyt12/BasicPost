@@ -1,0 +1,175 @@
+@font-face {
+    font-family: HyWenHei;
+    src: url(./asset/font/zh-cn.ttf);
+}
+
+* {
+    font-family: 'HyWenHei', Tahoma, Geneva, Verdana, sans-serif;
+    cursor: url('./asset/GIcursor.cur'), default;
+    cursor: url('./asset/GIcursor.cur'), pointer !important;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    background-color: rgb(0, 0, 0);
+    background-image: url(./asset/bg.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+.nav {
+    position: fixed;
+    width: 100%;
+    background-color: #f1ede9;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0px 20px;
+    box-sizing: border-box;
+    z-index: 1;
+
+}
+
+a, button {
+    background-color: #393b40;
+    border-radius: 5px;
+    color: #ffda9f;
+    border: none;
+    padding: 8px 12px;
+    margin: 0px 5px;
+    transition: 0.3s;
+    user-select: none;
+    text-decoration: none;
+}
+
+a:hover, button:hover {
+    color: white;
+}
+
+#user {
+    width: 200px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    color: #ffda9f;
+}
+
+#usernamE {
+    color: black;
+    margin-left: 10px;
+}
+
+.avt-bg {
+    width: 40px;
+    height: 40px;
+    border-radius: 100px;
+    background-color: #393b40;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.opt {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    width: 300px;
+}
+
+#post-box {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 600px;
+    height: 100vh;
+    z-index: 0;
+    transition: 0.5s;
+}
+
+#post-counter {
+    margin-top: 80px;
+    color: white;
+    width: 100%;
+    text-align: center;
+}
+
+.post {
+    width: 100%;
+    box-sizing: border-box;
+    background-color: #f1ede9;
+    padding: 15px 15px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+}
+
+#add-post-box {
+    position: fixed;
+    width: 400px;
+    height: 600px;
+    bottom: 0;
+    right: 0;
+    transform: translateX(110%);
+    background-color: #f1ede9;
+    border-radius: 5px;
+    margin: 0px 10px 10px 0px;
+    transition: 0.5s;
+}
+
+#addpost{
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+}
+
+#addpost input{
+    padding: 10px;
+    margin-bottom: 10px;
+    outline: none;
+}
+
+#addpost label{
+    margin-bottom: 5px;
+}
+
+#addpost textarea{
+    resize: none;
+    padding: 10px;
+    outline: none;
+}
+
+.uploadPost{
+    margin: 10px 0px;
+    padding: 10px 0px;
+
+}
+
+h3{
+    width: 100%;
+    text-align: center;
+    font-size: 130%;
+    font-weight: 100;
+}
+
+#header {
+    border-bottom: 1px solid grey;
+    color: gray;
+    font-size: 80%;
+    padding-bottom: 5px;
+}
+
+#title {
+    font-size: 150%;
+    padding: 0;
+    margin: 20px 0px;
+}
+
+#desc {
+    font-size: 90%;
+}

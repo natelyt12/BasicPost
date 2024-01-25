@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ầu shiet</title>
+    <link rel="stylesheet" href="./style.css">
+    <link rel="web icon" href="./asset/icon/full.png">
+</head>
+
+<body>
+    
+    <!-- Login -->
+    <div id="login-box">
+        <p id="title">Chào mừng!</p>
+
+        <form class="form" onsubmit="login()">
+            <input type="email" placeholder="Email" required id="email">
+            <input type="password" placeholder="Mật khẩu" required id="passwd">
+            <button type="button" id="toggle-forgot" onclick="toggleforgot()"
+                style="background-color: transparent; font-size: 90%; padding: 0; color: grey;">Quên mật khẩu?</button>
+            <button type="submit" class="enter" onclick="login()" onchange="login()">Đăng nhập</button>
+            <div id="social">
+                <p id="hr">Hoặc đăng nhập bằng</p>
+                <div>
+                    <button type="button" style="background-color: #DB4437;"><img src="./asset/icon/google.png" width="16px"
+                            height="16px">Google</button>
+                    <button type="button" style="background-color: #0165E1;"><img src="./asset/icon/facebook.png" width="16px"
+                            height="16px">Facebook</button>
+                </div>
+            </div>
+        </form>
+
+        <p id="signin-option">Bạn chưa có tài khoản? - <button id="toggle" onclick="toggleSlide()">Đăng ký</button></p>
+
+    </div>
+
+    <!-- Register -->
+    <div id="register-box">
+        <p id="title">Tạo tài khoản</p>
+
+        <form class="form" onsubmit="validateForm()">
+            <input id="reg-username" type="text" placeholder="Tên người dùng" required>
+            <input id="reg-email" type="email" placeholder="Email" required>
+            <input id="reg-pass" type="password" placeholder="Mật khẩu" required>
+            <input id="reg-repass" type="password" placeholder="Nhập lại mật khẩu" required>
+            <button type="submit" class="enter">Đăng ký</button>
+            <div id="social">
+                <p id="hr">Hoặc đăng nhập bằng</p>
+                <div>
+                    <button type="button" style="background-color: #DB4437;"><img src="./asset/icon/google.png" width="16px"
+                            height="16px">Google</button>
+                    <button type="button" style="background-color: #0165E1;"><img src="./asset/icon/facebook.png" width="16px"
+                            height="16px">Facebook</button>
+                </div>
+            </div>
+        </form>
+        <p id="signin-option"><button id="toggle" onclick="toggleSlide()">Đăng nhập</button></p>
+    </div>
+
+    <!-- Forgot password -->
+    <div id="forgot-box">
+        <p id="title">Đặt lại mật khẩu</p>
+
+        <form class="form">
+            <input type="email" placeholder="Email" required>
+            <input type="password" placeholder="Mật khẩu mới" required>
+            <button type="submit" class="enter">Đặt lại</button>
+            <div id="social">
+                <p id="hr">Chưa function phần này nên không hoạt động</p>
+            </div>
+        </form>
+        <p id="signin-option"><button id="toggle" onclick="toggleforgot()">Quay lại</button></p>
+    </div>
+
+    <script src="login.js"></script>
+</body>
+
+</html>

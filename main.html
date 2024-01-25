@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>bennett</title>
+    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+
+<body>
+    <div class="nav">
+        <div id="user">
+            <div class="avt-bg">
+                <p id="avt">:)</p>
+            </div>
+            <p id="usernamE">Khách</p>
+        </div>
+        <div class="opt">
+            <a id="post-link" onclick="PostBoxToggle()">Tạo post <i class="fa-solid fa-plus"></i></a>
+            <a href="login.html" id="login-link">Đăng nhập <i class="fa-regular fa-user"></i></a>
+            <a id="logout-link" onclick="logout()">Đăng xuất <i class="fa-solid fa-right-from-bracket"></i></a>
+        </div>
+    </div>
+
+    <div id="post-box">
+        
+    </div>
+
+    <div id="add-post-box">
+        <h3><i class="fa-solid fa-plus"></i> Tạo post mới</h3>
+        <form id="addpost" onsubmit="createPost()">
+            <label for="post-title">Tiêu đề:</label>
+            <input type="text" placeholder="Nhập tiêu đề" name="post-title" id="post-title" required>
+            <label for="post-desc">Nội dung:</label>
+            <textarea name="post-desc" id="post-desc" placeholder="Nhập nội dung" cols="40" rows="15" required></textarea>
+            <button type="submit" class="uploadPost" onclick="createPost()" onchange="createPost()">Đăng post <i class="fa-solid fa-arrow-up"></i></button>
+        </form>
+    </div>
+
+
+
+
+    <script src="main.js"></script>
+</body>
+
+</html>
