@@ -160,7 +160,7 @@ function login() {
     localStorage.setItem("active", parseAcc[0].email) // Tạo một local có tên active lưu gmail sau khi đăng nhập để lấy thông tin
     toggleDialog("Đăng nhập thành công!, đang chuyển hướng...")
     setTimeout(() => {
-      window.location.href = "./main.html"
+      window.location.href = "./index.html"
     },2000)
   }
 
