@@ -16,7 +16,7 @@
         <p id="title">Chào mừng!</p>
 
         <form class="form" onsubmit="login()">
-            <input type="email" placeholder="Email" required id="email">
+            <input type="text" placeholder="Email" required id="email">
             <input type="password" placeholder="Mật khẩu" required id="passwd">
             <button type="button" id="toggle-forgot" onclick="toggleforgot()"
                 style="background-color: transparent; font-size: 90%; padding: 0; color: grey;">Quên mật khẩu?</button>
@@ -40,9 +40,12 @@
     <div id="register-box">
         <p id="title">Tạo tài khoản</p>
 
-        <form class="form" onsubmit="validateForm()">
-            <input id="reg-username" type="text" placeholder="Tên người dùng" required>
-            <input id="reg-email" type="email" placeholder="Email" required>
+        <form id="reg_form" onsubmit="validateForm()">
+            <div id="alert">
+                <p id="errorText">abcdef</p>
+            </div>
+            <input id="reg-username" type="text" placeholder="Tên người dùng" onblur="CheckUS()" required>
+            <input id="reg-email" type="text" placeholder="Email" onblur="CheckEmail()" required>
             <input id="reg-pass" type="password" placeholder="Mật khẩu" required>
             <input id="reg-repass" type="password" placeholder="Nhập lại mật khẩu" required>
             <button type="submit" class="enter">Đăng ký</button>

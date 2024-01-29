@@ -12,12 +12,12 @@
 body {
     padding: 0;
     margin: 0;
-    background-image: url(./asset/bg.jpg);
+    /* background-image: url(./asset/bg.jpg);
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-position: center;
-    background-size: cover;
-    background-color: rgb(92, 92, 92);
+    background-size: cover; */
+    background-color: gray;
 
 }
 
@@ -53,8 +53,25 @@ body {
 
 /* Box */
 
+/* Alert box */
+#alert{
+    width: 100%;
+    background-color: rgb(255, 133, 133);
+    border-radius: 10px;
+    box-sizing: border-box;
+    display: none;
+}
+#alert p{
+    color: white;
+    margin: 10px 0px;
+    padding: 0;
+    width: 100%;
+    text-align: center;
+    font-size: 80%;
+}
+
 /* Form */
-.form {
+.form, #reg_form {
     display: flex;
     flex-direction: column;
     padding: 20px;
@@ -63,7 +80,7 @@ body {
     border-radius: 10px;
 }
 
-.form input {
+.form input, #reg_form input {
     padding: 10px 10px;
     margin: 10px 0px;
     border: none;
@@ -74,7 +91,7 @@ body {
     transition: 0.5s;
 }
 
-.form input:focus {
+.form input:focus, #reg_form input:focus {
     background-color: rgb(236, 236, 236);
 }
 

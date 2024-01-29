@@ -29,29 +29,26 @@ function toggleforgot() {
 
 // LETS GO
 // Kiểm tra form register
-function validateForm(submit) {
-  event.preventDefault()
 
+function getInput() {
   var reg_username = document.getElementById("reg-username").value
   var reg_email = document.getElementById("reg-email").value
   var reg_pass = document.getElementById("reg-pass").value
   var reg_repass = document.getElementById("reg-repass").value
-  // Mã regex kiểm tra mật khẩu
-  var regexTest = /^[a-zA-Z0-9_]+$/
-  let email_check = localStorage.getItem(reg_email)
-  // Check email, nếu email_check trả về string thì trùng
-  if (typeof(email_check) == "string") {
-    alert("Email đã được sử dụng")
-    return false
-  }
-  // CHeck username
-  else if (reg_username == " " || reg_username.length < 4 || reg_username.length > 15 || regexTest.test(reg_username) == false) {
-    alert("Tên người dùng không hợp lệ")
-    return false
-  }
-  // Check pass
-  else if (reg_pass.length < 6 || reg_pass.length >= 30) {
-    alert("Mật khẩu phải dài hơn 6 ký tự và ít hơn 30 ký tự")
+
+}
+// Mã regex kiểm tra mật khẩu
+let usernameCheck = /^(?=.{4,32}$)(?![_.-])(?!.*[_.]{2})[a-zA-Z0-9._-]+(?<![_.])$/;
+let emailCheck = /^[\w\-\.]+@([\w-]+\.)+[\w-]{2,}$/
+let passCheck = /^((?=\S*?[A-Z])(?=\S*?[a-z])(?=\S*?[0-9]).{6,})\S$/;
+
+// Check email, nếu email_check trả về string thì trùng
+
+function validateForm(submit) {
+  event.preventDefault()
+
+  if (passCheck.test(reg_pass) == false) {
+    alert("Mật khẩu không hợp lệ")
     return false
   }
   // CHeck repass
@@ -74,6 +71,32 @@ function validateForm(submit) {
 
   alert("Đăng ký tài khoản thành công!, bạn hãy đăng nhập tài khoản của mình.")
   toggleSlide()
+}
+
+function CheckUS() {
+  getInput()
+  console.log(getInput())
+  if (usernameCheck.test(reg_username) == false) {
+    document.getElementById("alert").style.display = "block"
+    document.getElementById("errorText").innerText = "Tên người dùng không hợp lệ"
+    console.log(reg_username)
+    return false
+  }
+}
+
+function CheckEmail() {
+  getInput()
+  let emailUsedCheck = localStorage.getItem(reg_email)
+  if (typeof (emailUsedCheck) == "string") {
+    document.getElementById("alert").style.display = "block"
+    document.getElementById("errorText").innerText = "Email đã được sử dụng"
+    return false
+  }
+  if (emailCheck.test(reg_email) == false) {
+    document.getElementById("alert").style.display = "block"
+    document.getElementById("errorText").innerText = "Email không hợp lệ"
+    return false
+  }
 }
 
 function login() {
