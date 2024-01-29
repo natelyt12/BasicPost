@@ -1,3 +1,4 @@
+// PREPARE
 // Function để toggle box đăng nhập và đăng ký
 function toggleSlide() {
   var login = document.getElementById("login-box");
@@ -10,6 +11,8 @@ function toggleSlide() {
     login.style.transform = "translate(-50%, -200%)";
     reg.style.transform = "translate(-50%, -50%)";
   }
+  document.getElementById("alert-login").style.display = "none"
+  document.getElementById("alert").style.display = "none"
 }
 
 // Function để toggle khi bấm vào quên mk
@@ -26,78 +29,122 @@ function toggleforgot() {
   }
 }
 
+setTimeout(() => {
+  let getDialog = document.getElementById("dialog-box")
+  getDialog.style.transform = "translateY(-100%)"
+}, 1000)
 
-// LETS GO
-// Kiểm tra form register
+function toggleDialog(text) {
+  let getDialog = document.getElementById("dialog-box")
+  getDialog.style.transform = "translateY(0%)"
+  setTimeout(() => {
+    getDialog.style.transform = "translateY(-100%)"
+  }, 3000)
+  return document.getElementById("dialog-text").innerText = text
+}
 
+
+// LETS GO!
+// Lấy giá trị của input
 function getInput() {
   var reg_username = document.getElementById("reg-username").value
   var reg_email = document.getElementById("reg-email").value
   var reg_pass = document.getElementById("reg-pass").value
   var reg_repass = document.getElementById("reg-repass").value
-
+  return {
+    username: reg_username,
+    email: reg_email,
+    password: reg_pass,
+    retype: reg_repass
+  }
 }
-// Mã regex kiểm tra mật khẩu
+
+// Mã regex kiểm tra
 let usernameCheck = /^(?=.{4,32}$)(?![_.-])(?!.*[_.]{2})[a-zA-Z0-9._-]+(?<![_.])$/;
 let emailCheck = /^[\w\-\.]+@([\w-]+\.)+[\w-]{2,}$/
 let passCheck = /^((?=\S*?[A-Z])(?=\S*?[a-z])(?=\S*?[0-9]).{6,})\S$/;
 
-// Check email, nếu email_check trả về string thì trùng
-
+// Check info
 function validateForm(submit) {
   event.preventDefault()
-
-  if (passCheck.test(reg_pass) == false) {
-    alert("Mật khẩu không hợp lệ")
+  if (CheckUS(), CheckEmail(), CheckPass(), CheckRepass() == false) {
+    console.log(CheckUS(), CheckEmail(), CheckPass(), CheckRepass())
     return false
-  }
-  // CHeck repass
-  else if (reg_pass !== reg_repass) {
-    alert("Mật khẩu nhập lại không giống nhau")
-    return false
-  }
-  // Tạo hồ sơ người dùng
-  let acc = [
-    {
-      name: reg_username,
-      email: reg_email,
-      pass: reg_pass
-    },
-    [] // Array rỗng để lưu post
-  ]
-  console.log(acc[1])
-  let accify = JSON.stringify(acc)
-  localStorage.setItem(reg_email, accify)
+  } else {
+    let acc = [
+      {
+        name: getInput().username,
+        email: getInput().email,
+        pass: getInput().password
+      },
+      [] // Array rỗng để lưu post
+    ]
+    console.log(acc[1])
+    let accify = JSON.stringify(acc)
+    localStorage.setItem(getInput().email, accify)
 
-  alert("Đăng ký tài khoản thành công!, bạn hãy đăng nhập tài khoản của mình.")
-  toggleSlide()
+    toggleDialog("Đăng ký thành công, hãy đăng nhập bằng tài khoản của bạn!")
+    toggleSlide()
+  }
 }
 
+// Check username
 function CheckUS() {
-  getInput()
-  console.log(getInput())
-  if (usernameCheck.test(reg_username) == false) {
+  if (usernameCheck.test(getInput().username) == false) {
     document.getElementById("alert").style.display = "block"
     document.getElementById("errorText").innerText = "Tên người dùng không hợp lệ"
-    console.log(reg_username)
+    toggleDialog("Tên người dùng phải chứa ít nhất 3 ký tự, không có ký tự đặc biệt")
     return false
+  } else {
+    document.getElementById("alert").style.display = "none"
   }
 }
 
+// Check email
 function CheckEmail() {
-  getInput()
-  let emailUsedCheck = localStorage.getItem(reg_email)
+  let getEmail = getInput().email
+  let emailUsedCheck = localStorage.getItem(getEmail)
   if (typeof (emailUsedCheck) == "string") {
     document.getElementById("alert").style.display = "block"
     document.getElementById("errorText").innerText = "Email đã được sử dụng"
     return false
-  }
-  if (emailCheck.test(reg_email) == false) {
+  } else
+    if (emailCheck.test(getEmail) == false) {
+      document.getElementById("alert").style.display = "block"
+      document.getElementById("errorText").innerText = "Email không hợp lệ"
+      return false
+    } else {
+      document.getElementById("alert").style.display = "none"
+    }
+}
+
+// Check pass
+function CheckPass() {
+  if (passCheck.test(getInput().password) == false) {
     document.getElementById("alert").style.display = "block"
-    document.getElementById("errorText").innerText = "Email không hợp lệ"
+    document.getElementById("errorText").innerText = "Mật khẩu không hợp lệ"
+    toggleDialog("Mật khẩu phải chứa chữ hoa, thường, ký tự đặc biệt và số")
     return false
+  } else {
+    document.getElementById("alert").style.display = "none"
   }
 }
+
+// Check pass nhập lại
+function CheckRepass() {
+  if (getInput().password !== getInput().retype) {
+    document.getElementById("alert").style.display = "block"
+    document.getElementById("errorText").innerText = "Mật khẩu nhập lại không giống nhau"
+    return false
+  } else if (passCheck.test(getInput().password) == false) {
+    document.getElementById("alert").style.display = "block"
+    document.getElementById("errorText").innerText = "Bạn phải nhập đúng mật khẩu"
+    return false
+  } else {
+    document.getElementById("alert").style.display = "none"
+  }
+}
+
 
 function login() {
   event.preventDefault()
@@ -106,12 +153,15 @@ function login() {
   let log_passwd = document.getElementById("passwd").value
   let parseAcc = JSON.parse(localStorage.getItem(log_email))   // Biến parseAcc để lấy email, nếu trả về null nghĩa là ko có email
   if (parseAcc == null || log_email == "" || log_passwd == "" || log_email !== parseAcc[0].email || log_passwd !== parseAcc[0].pass) {
-    alert("Sai tài khoản hoặc mật khẩu")
+    document.getElementById("alert-login").style.display = "block"
+    document.getElementById("errorText-login").innerText = "Sai tài khoản hoặc mật khẩu"
     return false
   } else {
-    alert("Đăng nhập thành công")
     localStorage.setItem("active", parseAcc[0].email) // Tạo một local có tên active lưu gmail sau khi đăng nhập để lấy thông tin
-    window.location.href = "./main.html"
+    toggleDialog("Đăng nhập thành công!, đang chuyển hướng...")
+    setTimeout(() => {
+      window.location.href = "./main.html"
+    },2000)
   }
 
 }

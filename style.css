@@ -12,13 +12,12 @@
 body {
     padding: 0;
     margin: 0;
-    /* background-image: url(./asset/bg.jpg);
+    background-image: url(./asset/bg.jpg);
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-position: center;
-    background-size: cover; */
+    background-size: cover;
     background-color: gray;
-
 }
 
 /* Login box */
@@ -54,21 +53,43 @@ body {
 /* Box */
 
 /* Alert box */
-#alert{
+#alert, #alert-login{
     width: 100%;
-    background-color: rgb(255, 133, 133);
-    border-radius: 10px;
+    background-color: rgb(255, 142, 142);
+    border: 1px solid rgb(255, 102, 102);
+    border-radius: 5px;
     box-sizing: border-box;
     display: none;
 }
-#alert p{
+#errorText, #errorText-login{
     color: white;
-    margin: 10px 0px;
+    margin: 8px 0px;
     padding: 0;
     width: 100%;
     text-align: center;
     font-size: 80%;
 }
+/* Alert box */
+
+/* dialog */
+#dialog-box{
+    position: absolute;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.63);
+    box-sizing: border-box;
+    z-index: 1;
+    transition: 0.5s;
+    transform: translateY(0%);
+}
+#dialog-text{
+    color: white;
+    margin: 8px 0px;
+    padding: 0;
+    width: 100%;
+    text-align: center;
+    font-size: 80%;
+}
+/* dialog */
 
 /* Form */
 .form, #reg_form {
@@ -190,5 +211,3 @@ button:hover {
     background: #ffffff34;
 }
 /* Scrollbar */
-
-
