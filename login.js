@@ -161,7 +161,7 @@ function login() {
     toggleDialog("Đăng nhập thành công!, đang chuyển hướng...")
     setTimeout(() => {
       window.location.href = "./index.html"
-    },2000)
+    }, 2000)
   }
 
 }

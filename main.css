@@ -7,6 +7,7 @@
     font-family: 'HyWenHei', Tahoma, Geneva, Verdana, sans-serif;
     cursor: url('./asset/GIcursor.cur'), default;
     cursor: url('./asset/GIcursor.cur'), pointer !important;
+    box-sizing: border-box;
 }
 
 body {
@@ -30,7 +31,6 @@ body {
     justify-content: space-between;
     align-items: center;
     padding: 0px 20px;
-    box-sizing: border-box;
     z-index: 1;
 
 }
