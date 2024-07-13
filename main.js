@@ -4,6 +4,11 @@ function logout() {
     location.reload()
 }
 
+function delLocal() {
+    localStorage.clear()
+    location.reload()
+}
+
 // Lấy ngày tháng năm, tên người đăng post
 function getHeader(date) {
     // Dates
@@ -18,7 +23,7 @@ function getHeader(date) {
     minute = minute < 10 ? "0" + minute : minute;
     // Lấy tên trên navbar:))
     let namE = document.getElementById("usernamE").innerHTML
-    
+
     // Trả về dữ liệu func
     return `Đăng bởi ${namE} - ${day}/${month}/${year} - ${hour}:${minute}`;
 }
@@ -41,24 +46,31 @@ function createPost() {
     event.preventDefault()
 
     // Lấy thông tin trong form tạo
-    let getTitle = document.getElementById("post-title").value
-    let getDesc = document.getElementById("post-desc").value
+    let getTitle = document.getElementById("post-title").value.trim()
+    let getDesc = document.getElementById("post-desc")
 
-    // Tạo một object lưu thông tin
-    var newPost = {
-        title: getTitle,
-        desc: getDesc,
-        date: getHeader()
+    if (getTitle.value == 'null' || getDesc == 'null') {
+        console.log('no')
+        console.log(getTitle + ',' + getDesc.value)
+        return false
+    } else {
+        // Tạo một object lưu thông tin
+        var newPost = {
+            title: getTitle,
+            desc: getDesc.value,
+            date: getHeader()
+        }
+        console.log(newPost)
+        let getInfo = localStorage.getItem("active") // Lấy gmail trong local tên active
+        let parseInfo = JSON.parse(localStorage.getItem(getInfo)) // Parse cái gmail đó
+        parseInfo[1].unshift(newPost) // Thêm post mới vào
+        console.log(parseInfo) // Console để check post mới đã thêm chưa
+        let stringInfo = JSON.stringify(parseInfo) // String lại gmail đó
+        localStorage.setItem(getInfo, stringInfo) // Đẩy lên gmail đó
+        PostBoxToggle() // Toggle tắt cái box tạo post
+        location.reload() // reload trang
     }
-    console.log(newPost)
-    let getInfo = localStorage.getItem("active") // Lấy gmail trong local tên active
-    let parseInfo = JSON.parse(localStorage.getItem(getInfo)) // Parse cái gmail đó
-    parseInfo[1].unshift(newPost) // Thêm post mới vào
-    console.log(parseInfo) // Console để check post mới đã thêm chưa
-    let stringInfo = JSON.stringify(parseInfo) // String lại gmail đó
-    localStorage.setItem(getInfo, stringInfo) // Đẩy lên gmail đó
-    PostBoxToggle() // Toggle tắt cái box tạo post
-    location.reload() // reload trang
+
 }
 
 // Code chính
@@ -75,7 +87,7 @@ if (localStorage.getItem("active") == null || localStorage.getItem("active") == 
     let counter = document.createElement("p")
     counter.id = "post-counter"
     postCon.appendChild(counter)
-    document.getElementById("post-counter").innerHTML = "Bạn phải đăng nhập trước khi tạo post"
+    document.getElementById("post-counter").innerHTML = " - Mỗi không gian trống là một khởi đầu - "
 
 } else { // khi đăng nhập
     let getInfo = localStorage.getItem("active") // lấy active vì lúc này active đã có gmail đăng nhập
@@ -122,4 +134,10 @@ if (localStorage.getItem("active") == null || localStorage.getItem("active") == 
         document.getElementById("post-counter").innerHTML = postLength + " Bài đăng"
     }
 
+}
+
+function dummy() {
+    localStorage.setItem('a@gm.co', '[{"name":"Natelyt","email":"a@gm.co","pass":"Zz123456@"},[]]')
+    localStorage.setItem('active', 'a@gm.co')
+    location.reload()
 }

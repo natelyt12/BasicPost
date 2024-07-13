@@ -3,7 +3,7 @@
     src: url(./asset/font/zh-cn.ttf);
 }
 
-*{
+* {
     font-family: 'HyWenHei', Tahoma, Geneva, Verdana, sans-serif;
     cursor: url('./asset/GIcursor.cur'), default;
     cursor: url('./asset/GIcursor.cur'), pointer !important;
@@ -12,7 +12,7 @@
 body {
     padding: 0;
     margin: 0;
-    background-image: url(./asset/bg.jpg);
+    background-image: url(./asset/bg.png);
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-position: center;
@@ -20,27 +20,29 @@ body {
     background-color: gray;
 }
 
-button{
+button {
     transition: 0.2s !important;
 }
 
-button:active{
+button:active {
     transform: scale(90%);
 }
 
 /* Login box */
 /* Box */
-#login-box, #register-box, #forgot-box{
+#login-box,
+#register-box,
+#forgot-box {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -200%);
     width: 350px;
     color: #f1ede9;
-    transition: 1s;
+    transition: 0.8s;
 }
 
-#login-box{
+#login-box {
     transform: translate(-50%, -50%);
 }
 
@@ -61,15 +63,17 @@ button:active{
 /* Box */
 
 /* Alert box */
-#alert, #alert-login{
+#alert,
+#alert-login {
     width: 100%;
-    background-color: rgb(255, 142, 142);
-    border: 1px solid rgb(255, 102, 102);
+    background-color: rgb(255, 120, 120);
     border-radius: 5px;
     box-sizing: border-box;
     display: none;
 }
-#errorText, #errorText-login{
+
+#errorText,
+#errorText-login {
     color: white;
     margin: 8px 0px;
     padding: 0;
@@ -77,10 +81,11 @@ button:active{
     text-align: center;
     font-size: 80%;
 }
+
 /* Alert box */
 
 /* dialog */
-#dialog-box{
+#dialog-box {
     position: absolute;
     width: 100%;
     background-color: rgba(0, 0, 0, 0.63);
@@ -89,7 +94,8 @@ button:active{
     transition: 0.5s ease-in-out;
     transform: translateY(0%);
 }
-#dialog-text{
+
+#dialog-text {
     color: white;
     margin: 8px 0px;
     padding: 0;
@@ -97,10 +103,12 @@ button:active{
     text-align: center;
     font-size: 80%;
 }
+
 /* dialog */
 
 /* Form */
-.form, #reg_form {
+.form,
+#reg_form {
     display: flex;
     flex-direction: column;
     padding: 20px;
@@ -110,18 +118,20 @@ button:active{
     box-shadow: rgba(100, 100, 111, 0.555) 0px 7px 29px 0px;
 }
 
-.form input, #reg_form input {
+.form input,
+#reg_form input {
     padding: 10px 10px;
     margin: 10px 0px;
     border: none;
-    border-bottom: 1px solid #393b40;
+    border-bottom: 1px solid #393b4063;
     background-color: #f1ede9;
     outline: none;
     color: black;
     transition: 0.5s;
 }
 
-.form input:focus, #reg_form input:focus {
+.form input:focus,
+#reg_form input:focus {
     background-color: rgb(236, 236, 236);
 }
 
@@ -140,7 +150,7 @@ button:active{
     color: #d7b172;
 }
 
-#hr{
+#hr {
     font-size: 70%;
     text-align: center;
     color: grey;
@@ -202,21 +212,11 @@ button:hover {
     overflow: scroll;
     overflow-x: hidden;
 }
+
+#back-btn {
+    position: absolute;
+    bottom: 0;
+    margin-left: 5px;
+}
+
 /* Menu */
-
-
-/* Scrollbar */
-::-webkit-scrollbar {
-    width: 5px;
-}
-
-/* Track */
-::-webkit-scrollbar-track {
-    background: transparent;
-}
-
-/* Handle */
-::-webkit-scrollbar-thumb {
-    background: #ffffff34;
-}
-/* Scrollbar */

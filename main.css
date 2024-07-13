@@ -15,7 +15,7 @@ body {
     padding: 0;
     overflow-x: hidden;
     background-color: grey;
-    background-image: url(./asset/bg.jpg);
+    background-image: url(./asset/bg.png);
     background-repeat: no-repeat;
     background-position: center;
     background-attachment: fixed;
@@ -35,7 +35,8 @@ body {
 
 }
 
-a, button {
+a,
+button {
     background-color: #393b40;
     border-radius: 5px;
     color: #ffda9f;
@@ -47,7 +48,8 @@ a, button {
     text-decoration: none;
 }
 
-a:hover, button:hover {
+a:hover,
+button:hover {
     color: white;
 }
 
@@ -80,7 +82,7 @@ a:hover, button:hover {
     flex-direction: row;
     justify-content: flex-end;
     align-items: center;
-    width: 300px;
+    width: 600px;
 }
 
 #post-box {
@@ -112,7 +114,7 @@ a:hover, button:hover {
 #add-post-box {
     position: fixed;
     width: 400px;
-    height: 600px;
+    height: 550px;
     bottom: 0;
     right: 0;
     transform: translateX(110%);
@@ -122,35 +124,35 @@ a:hover, button:hover {
     transition: 0.5s;
 }
 
-#addpost{
+#addpost {
     display: flex;
     flex-direction: column;
     padding: 20px;
 }
 
-#addpost input{
+#addpost input {
     padding: 10px;
     margin-bottom: 10px;
     outline: none;
 }
 
-#addpost label{
+#addpost label {
     margin-bottom: 5px;
 }
 
-#addpost textarea{
+#addpost textarea {
     resize: none;
     padding: 10px;
     outline: none;
 }
 
-.uploadPost{
+.uploadPost {
     margin: 10px 0px;
     padding: 10px 0px;
 
 }
 
-h3{
+h3 {
     width: 100%;
     text-align: center;
     font-size: 130%;
@@ -172,4 +174,28 @@ h3{
 
 #desc {
     font-size: 90%;
+}
+
+#add-post-box {
+    width: 400px;
+    margin: 0;
+    height: 100%;
+    border-radius: 0px;
+}
+
+
+@media screen and (max-width: 720px) {
+    .mobile {
+        display: none;
+    }
+
+    #post-box {
+        width: 100%;
+        padding: 0 10px;
+        box-sizing: border-box;
+    }
+
+    #add-post-box {
+        width: 100%
+    }
 }
