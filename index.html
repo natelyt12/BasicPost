@@ -70,8 +70,9 @@
     <script>
         let descCount = document.getElementById('descCount')
         const options = [
-            ['bold', 'italic', 'underline', 'strike', 'blockquote'],
-            [{ 'color': ['#f7ba0b', '#d4652f', '#a02128', '#904684', '#154889', '#317f43', '#9b9b9b', '#7b5141'] }, { 'list': 'ordered' }]
+            ['bold', 'italic', 'underline', 'strike'],
+            [{ 'color': ['#f7ba0b', '#d4652f', '#a02128', '#904684', '#154889', '#317f43', '#9b9b9b', '#7b5141'] }, { 'list': 'ordered' }],
+            ['clean']
         ]
 
         const quill = new Quill('#desc-editor', {
