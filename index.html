@@ -5,8 +5,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Post</title>
+    <link rel="icon" href="./asset/icon/full.png">
     <link rel="stylesheet" href="main.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/quill@2.0.2/dist/quill.snow.css" rel="stylesheet" />
 </head>
 
 <body>
@@ -18,7 +20,7 @@
             <p id="usernamE">Khách</p>
         </div>
         <div class="opt">
-            <!-- <a id="opt-link" onclick="dummy()"><span class="mobile">Natelyt</span> <i class="fa-solid fa-plus"></i></a> -->
+            <a id="opt-link" onclick="dummy()"><span class="mobile">Natelyt</span> <i class="fa-solid fa-plus"></i></a>
             <a id="opt-link" onclick="delLocal()"><span class="mobile">Xóa LoStr</span> <i
                     class="fa-solid fa-trash"></i></a>
             <a id="post-link" onclick="PostBoxToggle()"><span class="mobile">Tạo post</span> <i
@@ -33,22 +35,40 @@
 
     </div>
 
+
     <div id="add-post-box">
         <h3>Tạo post mới</h3>
         <form id="addpost" onsubmit="createPost()">
-            <label for="post-title">Tiêu đề:</label>
-            <input type="text" placeholder="Nhập tiêu đề" name="post-title" id="post-title">
-            <label for="post-desc">Nội dung:</label>
-            <textarea name="post-desc" id="post-desc" placeholder="Nhập nội dung" cols="40" rows="15"></textarea>
+            <label for="post-title">Tiêu đề: <span id="charCount"></span></label>
+            <input type="text" placeholder="Nhập tiêu đề" name="post-title" id="post-title" maxlength="50">
+            <p>Nội dung:</p>
+            <div id="desc-editor">
+
+            </div>
             <button type="submit" class="uploadPost" onclick="createPost()" onchange="createPost()">Đăng post <i
                     class="fa-solid fa-arrow-up"></i></button>
         </form>
     </div>
 
 
-
-
+    <!-- Script -->
+    <script src="https://cdn.jsdelivr.net/npm/quill@2.0.2/dist/quill.js"></script>
     <script src="main.js"></script>
+    <script>
+        const options = [
+            ['bold', 'italic', 'underline', 'strike', 'blockquote'],
+            [{ 'color': ['#f7ba0b', '#d4652f', '#a02128', '#904684', '#154889', '#317f43', '#9b9b9b', '#7b5141'] }, { 'list': 'ordered' }]
+        ]
+        const quill = new Quill('#desc-editor', {
+            theme: 'snow',
+            modules: {
+                toolbar: options
+            },
+            placeholder: 'Nhập tại đây'
+
+        });
+
+    </script>
 </body>
 
 </html>

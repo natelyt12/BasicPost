@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ầu shiet</title>
+    <title>Post | Tài khoản</title>
     <link rel="stylesheet" href="./style.css">
     <link rel="web icon" href="./asset/icon/full.png">
 </head>
@@ -24,20 +24,11 @@
             <div id="alert-login">
                 <p id="errorText-login">abcdef</p>
             </div>
-            <input type="text" placeholder="Email" id="email" required>
+            <input type="text" placeholder="Tên người dùng" id="email" required>
             <input type="password" placeholder="Mật khẩu" id="passwd" required>
             <button type="button" id="toggle-forgot" onclick="toggleforgot()"
                 style="background-color: transparent; font-size: 90%; padding: 0; color: grey;">Quên mật khẩu?</button>
             <button type="submit" class="enter" onclick="login()" onchange="login()">Đăng nhập</button>
-            <div id="social">
-                <p id="hr">Hoặc đăng nhập bằng</p>
-                <div>
-                    <button type="button" style="background-color: #DB4437;"><img src="./asset/icon/google.png"
-                            width="16px" height="16px">Google</button>
-                    <button type="button" style="background-color: #0165E1;"><img src="./asset/icon/facebook.png"
-                            width="16px" height="16px">Facebook</button>
-                </div>
-            </div>
         </form>
 
         <p id="signin-option">Bạn chưa có tài khoản? - <button id="toggle" onclick="toggleSlide()">Đăng ký</button></p>
@@ -53,19 +44,9 @@
                 <p id="errorText">abcdef</p>
             </div>
             <input id="reg-username" type="text" placeholder="Tên người dùng" onblur="CheckUS()" required>
-            <input id="reg-email" type="text" placeholder="Email" onblur="CheckEmail()" required>
             <input id="reg-pass" type="password" placeholder="Mật khẩu" onblur="CheckPass()" required>
             <input id="reg-repass" type="password" placeholder="Nhập lại mật khẩu" onblur="CheckRepass()" required>
             <button type="submit" class="enter">Đăng ký</button>
-            <div id="social">
-                <p id="hr">Hoặc đăng nhập bằng</p>
-                <div>
-                    <button type="button" style="background-color: #DB4437;"><img src="./asset/icon/google.png"
-                            width="16px" height="16px">Google</button>
-                    <button type="button" style="background-color: #0165E1;"><img src="./asset/icon/facebook.png"
-                            width="16px" height="16px">Facebook</button>
-                </div>
-            </div>
         </form>
         <p id="signin-option"><button id="toggle" onclick="toggleSlide()">Đăng nhập</button></p>
     </div>

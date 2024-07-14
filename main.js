@@ -4,8 +4,15 @@ function logout() {
     location.reload()
 }
 
+
 function delLocal() {
     localStorage.clear()
+    location.reload()
+}
+
+function dummy() {
+    localStorage.setItem('a@gm.co', '[{"name":"Natelyt","email":"a@gm.co","pass":"Zz123456@"},[]]')
+    localStorage.setItem('active', 'a@gm.co')
     location.reload()
 }
 
@@ -40,6 +47,19 @@ function PostBoxToggle() {
         postBox.style.transform = "translateX(-85%)"
     }
 }
+
+// Check ký tự
+let charcheck = /^[a-zA-Z0-9()?!*=:áàảãạâấầẩẫậăắằẳẵặóòỏõọôốồổỗộơớờởỡợuúùủũụưứừửữựđíìỉĩịéèẻẽẹêéềểễệÁÀẢÃẠÂẤẦẨẪẬĂẮẰẲẴẶÓÒỎÕỌÔỐỒỔỖỘƠỚỜỞỠỢUÚÙỦŨỤƯỨỪỬỮỰĐÍÌỈĨỊÉÈẺẼẸÊÉỀỂỄỆ\s]+$/
+let titleInp = document.getElementById('post-title')
+let charCount = document.getElementById('charCount')
+titleInp.addEventListener('input', () => {
+    const textLength = titleInp.value.length;
+    charCount.textContent = `${textLength}/50`;
+    if (charcheck.test(titleInp.value) == false) {
+        charCount.textContent = `Không sử dụng ký tự đặc biệt`
+    }
+})
+
 
 // Tạo post
 function createPost() {
@@ -136,8 +156,3 @@ if (localStorage.getItem("active") == null || localStorage.getItem("active") == 
 
 }
 
-function dummy() {
-    localStorage.setItem('a@gm.co', '[{"name":"Natelyt","email":"a@gm.co","pass":"Zz123456@"},[]]')
-    localStorage.setItem('active', 'a@gm.co')
-    location.reload()
-}

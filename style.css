@@ -156,31 +156,6 @@ button:active {
     color: grey;
 }
 
-#social div {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-}
-
-#social button {
-    padding: 0px;
-    border: none;
-    margin: 10px 5px;
-    padding: 8px 20px;
-    border-radius: 100px;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    color: white;
-    cursor: pointer;
-}
-
-#social img {
-    filter: invert();
-    margin-right: 10px;
-}
-
 /* Form */
 /* Login box */
 

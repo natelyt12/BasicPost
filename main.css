@@ -183,6 +183,25 @@ h3 {
     border-radius: 0px;
 }
 
+#post-title {
+    background-color: transparent;
+    border: 1px solid #393b402a;
+    border-radius: 5px;
+}
+
+#charCount {
+    color: grey;
+}
+
+/* Quill */
+.ql-toolbar button {
+    margin: 0;
+}
+
+.ql-editor {
+    font-size: 110%;
+}
+
 
 @media screen and (max-width: 720px) {
     .mobile {
