@@ -1,3 +1,7 @@
+document.addEventListener('DOMContentLoaded', () => {
+    document.getElementById('alert').style.display = 'block'
+})
+
 function logout() {
     // Set lại active thành none
     localStorage.setItem("active", "none")

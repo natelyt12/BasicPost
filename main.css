@@ -211,10 +211,8 @@ h3 {
     width: 300px;
     background-color: #f1ede9;
     padding: 10px 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
     border-radius: 5px;
+    display: none;
     /* custom */
 }
 
