@@ -4,7 +4,6 @@ function logout() {
     location.reload()
 }
 
-
 function delLocal() {
     localStorage.clear()
     location.reload()
@@ -14,6 +13,23 @@ function dummy() {
     localStorage.setItem('a@gm.co', '[{"name":"Natelyt","email":"a@gm.co","pass":"Zz123456@"},[]]')
     localStorage.setItem('active', 'a@gm.co')
     location.reload()
+}
+
+if (localStorage.getItem('nopopup') == 'true') {
+    document.getElementById('black').style.display = 'none'
+}
+
+function ok() {
+    document.getElementById('black').style.opacity = '0'
+    setTimeout(() => {
+        document.getElementById('black').style.display = 'none'
+    }, 500);
+    localStorage.setItem('nopopup', 'true')
+}
+
+function no() {
+    window.location.href = 'https://www.youtube.com/watch?v=9O24MDSSxt8&list=RD0A6hCfFZVj4&index=20'
+    localStorage.clear()
 }
 
 // Lấy ngày tháng năm, tên người đăng post
@@ -49,14 +65,17 @@ function PostBoxToggle() {
 }
 
 // Check ký tự
-let charcheck = /^[a-zA-Z0-9()?!*=:áàảãạâấầẩẫậăắằẳẵặóòỏõọôốồổỗộơớờởỡợuúùủũụưứừửữựđíìỉĩịéèẻẽẹêéềểễệÁÀẢÃẠÂẤẦẨẪẬĂẮẰẲẴẶÓÒỎÕỌÔỐỒỔỖỘƠỚỜỞỠỢUÚÙỦŨỤƯỨỪỬỮỰĐÍÌỈĨỊÉÈẺẼẸÊÉỀỂỄỆ\s]+$/
+let charcheck = /^[a-zA-Z0-9?!.áàảãạâấầẩẫậăắằẳẵặóòỏõọôốồổỗộơớờởỡợuúùủũụưứừửữựđíìỉĩịéèẻẽẹêéềểễệÁÀẢÃẠÂẤẦẨẪẬĂẮẰẲẴẶÓÒỎÕỌÔỐỒỔỖỘƠỚỜỞỠỢUÚÙỦŨỤƯỨỪỬỮỰĐÍÌỈĨỊÉÈẺẼẸÊÉỀỂỄỆ\s]+$/
 let titleInp = document.getElementById('post-title')
 let charCount = document.getElementById('charCount')
+
 titleInp.addEventListener('input', () => {
     const textLength = titleInp.value.length;
-    charCount.textContent = `${textLength}/50`;
+    charCount.textContent = `${textLength}/30`;
     if (charcheck.test(titleInp.value) == false) {
-        charCount.textContent = `Không sử dụng ký tự đặc biệt`
+        charCount.textContent = `${textLength}/30, dính ký tự đặc biệt`
+    } else if (titleInp.value.length < 4) {
+        charCount.textContent = `${textLength}/30, tiêu đề quá ngắn`
     }
 })
 
@@ -67,29 +86,34 @@ function createPost() {
 
     // Lấy thông tin trong form tạo
     let getTitle = document.getElementById("post-title").value.trim()
-    let getDesc = document.getElementById("post-desc")
+    let getDesc = document.getElementsByClassName("ql-editor")[0]
 
-    if (getTitle.value == 'null' || getDesc == 'null') {
-        console.log('no')
-        console.log(getTitle + ',' + getDesc.value)
-        return false
-    } else {
-        // Tạo một object lưu thông tin
-        var newPost = {
-            title: getTitle,
-            desc: getDesc.value,
-            date: getHeader()
-        }
-        console.log(newPost)
-        let getInfo = localStorage.getItem("active") // Lấy gmail trong local tên active
-        let parseInfo = JSON.parse(localStorage.getItem(getInfo)) // Parse cái gmail đó
-        parseInfo[1].unshift(newPost) // Thêm post mới vào
-        console.log(parseInfo) // Console để check post mới đã thêm chưa
-        let stringInfo = JSON.stringify(parseInfo) // String lại gmail đó
-        localStorage.setItem(getInfo, stringInfo) // Đẩy lên gmail đó
-        PostBoxToggle() // Toggle tắt cái box tạo post
-        location.reload() // reload trang
+    if (getTitle == '') {
+        getTitle = 'Không có tiêu đề'
     }
+    if (getDesc.innerHTML == '<p><br></p>') {
+        getDesc.innerText = 'Không có nội dung bài viết'
+    }
+
+    // Tạo một object lưu thông tin
+    var newPost = {
+        title: getTitle,
+        desc: getDesc.innerHTML,
+        date: getHeader()
+    }
+
+    console.log(getTitle)
+    console.log(getDesc.innerHTML)
+    console.log(newPost)
+    let getInfo = localStorage.getItem("active") // Lấy gmail trong local tên active
+    let parseInfo = JSON.parse(localStorage.getItem(getInfo)) // Parse cái gmail đó
+    parseInfo[1].unshift(newPost) // Thêm post mới vào
+    console.log(parseInfo) // Console để check post mới đã thêm chưa
+    let stringInfo = JSON.stringify(parseInfo) // String lại gmail đó
+    localStorage.setItem(getInfo, stringInfo) // Đẩy lên gmail đó
+    PostBoxToggle() // Toggle tắt cái box tạo post
+    location.reload() // reload trang
+
 
 }
 

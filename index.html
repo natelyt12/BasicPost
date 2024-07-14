@@ -12,16 +12,30 @@
 </head>
 
 <body>
+    <div id="black">
+        <div id="alert">
+            <p class="alert-title">Lưu ý</p>
+            <p>Những bài viết không được kiểm duyệt, cân nhắc trước khi xem (tôi cũng có thể xóa bài viết của các bạn
+                nếu nó
+                bậy bạ)</p>
+            <div class="alert-opt">
+                <button onclick="ok()">Đã hiểu</button>
+                <button onclick="no()">Thoát</button>
+            </div>
+        </div>
+    </div>
+
+
     <div class="nav">
         <div id="user">
             <div class="avt-bg">
-                <p id="avt">:)</p>
+                <p id="avt">=)</p>
             </div>
-            <p id="usernamE">Khách</p>
+            <p id="usernamE">Chưa đăng nhập</p>
         </div>
         <div class="opt">
             <a id="opt-link" onclick="dummy()"><span class="mobile">Natelyt</span> <i class="fa-solid fa-plus"></i></a>
-            <a id="opt-link" onclick="delLocal()"><span class="mobile">Xóa LoStr</span> <i
+            <a id="opt-link" onclick="delLocal()"><span class="mobile">Reset web</span> <i
                     class="fa-solid fa-trash"></i></a>
             <a id="post-link" onclick="PostBoxToggle()"><span class="mobile">Tạo post</span> <i
                     class="fa-solid fa-plus"></i></a>
@@ -40,10 +54,9 @@
         <h3>Tạo post mới</h3>
         <form id="addpost" onsubmit="createPost()">
             <label for="post-title">Tiêu đề: <span id="charCount"></span></label>
-            <input type="text" placeholder="Nhập tiêu đề" name="post-title" id="post-title" maxlength="50">
-            <p>Nội dung:</p>
+            <input type="text" placeholder="Nhập tiêu đề" name="post-title" id="post-title" maxlength="30">
+            <p>Nội dung: <span id="descCount"></span></p>
             <div id="desc-editor">
-
             </div>
             <button type="submit" class="uploadPost" onclick="createPost()" onchange="createPost()">Đăng post <i
                     class="fa-solid fa-arrow-up"></i></button>
@@ -55,10 +68,12 @@
     <script src="https://cdn.jsdelivr.net/npm/quill@2.0.2/dist/quill.js"></script>
     <script src="main.js"></script>
     <script>
+        let descCount = document.getElementById('descCount')
         const options = [
             ['bold', 'italic', 'underline', 'strike', 'blockquote'],
             [{ 'color': ['#f7ba0b', '#d4652f', '#a02128', '#904684', '#154889', '#317f43', '#9b9b9b', '#7b5141'] }, { 'list': 'ordered' }]
         ]
+
         const quill = new Quill('#desc-editor', {
             theme: 'snow',
             modules: {
@@ -66,6 +81,16 @@
             },
             placeholder: 'Nhập tại đây'
 
+        });
+
+        const limit = 2000;
+        quill.on('text-change', function () {
+            descCount.textContent = `${quill.getLength()}/2000`
+            if (quill.getLength() > limit) {
+                quill.deleteText(limit, quill.getLength());
+            } else if (quill.getLength() < 10) {
+                descCount.textContent = `${quill.getLength()}/2000, Bài viết quá ngắn`
+            }
         });
 
     </script>

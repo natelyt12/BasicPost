@@ -149,7 +149,6 @@ button:hover {
 .uploadPost {
     margin: 10px 0px;
     padding: 10px 0px;
-
 }
 
 h3 {
@@ -173,7 +172,7 @@ h3 {
 }
 
 #desc {
-    font-size: 90%;
+    font-size: 100%;
 }
 
 #add-post-box {
@@ -181,6 +180,7 @@ h3 {
     margin: 0;
     height: 100%;
     border-radius: 0px;
+    overflow: auto;
 }
 
 #post-title {
@@ -189,7 +189,8 @@ h3 {
     border-radius: 5px;
 }
 
-#charCount {
+#charCount,
+#descCount {
     color: grey;
 }
 
@@ -200,6 +201,37 @@ h3 {
 
 .ql-editor {
     font-size: 110%;
+}
+
+#alert {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 300px;
+    background-color: #f1ede9;
+    padding: 10px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 5px;
+    /* custom */
+}
+
+
+#alert .alert-title {
+    text-align: center;
+    margin: 10px 0 0 0;
+    font-size: 130%;
+}
+
+#black {
+    background-color: rgba(0, 0, 0, 0.932);
+    width: 100%;
+    height: 100vh;
+    position: absolute;
+    z-index: 2;
+    transition: 200ms;
 }
 
 
