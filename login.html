@@ -43,9 +43,11 @@
             <div id="alert">
                 <p id="errorText">abcdef</p>
             </div>
-            <input id="reg-username" type="text" placeholder="Tên người dùng" onblur="CheckUS()" required>
-            <input id="reg-pass" type="password" placeholder="Mật khẩu" onblur="CheckPass()" required>
-            <input id="reg-repass" type="password" placeholder="Nhập lại mật khẩu" onblur="CheckRepass()" required>
+            <input id="reg-username" type="text" placeholder="Tên người dùng" onblur="CheckUS()" required
+                maxlength="15">
+            <input id="reg-pass" type="password" placeholder="Mật khẩu" onblur="CheckPass()" required maxlength="30">
+            <input id="reg-repass" type="password" placeholder="Nhập lại mật khẩu" onblur="CheckRepass()" required
+                maxlength="30">
             <button type="submit" class="enter">Đăng ký</button>
         </form>
         <p id="signin-option"><button id="toggle" onclick="toggleSlide()">Đăng nhập</button></p>

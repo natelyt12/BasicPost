@@ -13,13 +13,16 @@
 body {
     margin: 0;
     padding: 0;
-    overflow-x: hidden;
     background-color: grey;
-    background-image: url(./asset/bg.png);
+    background-image: url(./asset/bg.jpeg);
     background-repeat: no-repeat;
     background-position: center;
     background-attachment: fixed;
     background-size: cover;
+}
+
+::-webkit-scrollbar {
+    width: 0;
 }
 
 .nav {
@@ -54,7 +57,7 @@ button:hover {
 }
 
 #user {
-    width: 200px;
+    width: 50%;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -82,7 +85,7 @@ button:hover {
     flex-direction: row;
     justify-content: flex-end;
     align-items: center;
-    width: 600px;
+    width: 50%;
 }
 
 #post-box {
@@ -100,15 +103,17 @@ button:hover {
     color: white;
     width: 100%;
     text-align: center;
+    text-shadow: .1em .1em 0 hsla(0, 0%, 0%, 0.726);
 }
 
 .post {
     width: 100%;
     box-sizing: border-box;
-    background-color: #f1ede9;
+    background-color: #0000006c;
+    backdrop-filter: blur(10px);
     padding: 15px 15px;
     margin-bottom: 10px;
-    border-radius: 8px;
+    border-radius: 6px;
 }
 
 #add-post-box {
@@ -160,7 +165,7 @@ h3 {
 
 #header {
     border-bottom: 1px solid grey;
-    color: gray;
+    color: rgb(204, 204, 204);
     font-size: 80%;
     padding-bottom: 5px;
 }
@@ -169,10 +174,12 @@ h3 {
     font-size: 150%;
     padding: 0;
     margin: 20px 0px;
+    color: white;
 }
 
 #desc {
     font-size: 100%;
+    color: white;
 }
 
 #add-post-box {
@@ -212,7 +219,9 @@ h3 {
     background-color: #f1ede9;
     padding: 10px 20px;
     border-radius: 5px;
-    display: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     /* custom */
 }
 
@@ -246,5 +255,9 @@ h3 {
 
     #add-post-box {
         width: 100%
+    }
+
+    #opt-link {
+        display: none;
     }
 }

@@ -58,7 +58,7 @@ function getInput() {
 }
 
 // Mã regex kiểm tra
-let usernameCheck = /^(?=.{4,32}$)(?![_.-])(?!.*[_.]{2})[a-zA-Z0-9._-]+(?<![_.])$/;
+let usernameCheck = /^(?=.{4,15}$)(?![_.-])(?!.*[_.]{2})[a-zA-Z0-9._-]+(?<![_.])$/;
 let passCheck = /^((?=\S*?[A-Z])(?=\S*?[a-z])(?=\S*?[0-9]).{6,})\S$/;
 
 // Check info
@@ -89,7 +89,7 @@ function CheckUS() {
   if (usernameCheck.test(getInput().username) == false) {
     document.getElementById("alert").style.display = "block"
     document.getElementById("errorText").innerText = "Tên người dùng không hợp lệ"
-    toggleDialog("Tên người dùng phải chứa ít nhất 3 ký tự, không có ký tự đặc biệt")
+    toggleDialog("Tên người dùng phải chứa ít nhất 4 ký tự, không có ký tự đặc biệt")
     return false
   } else {
     document.getElementById("alert").style.display = "none"

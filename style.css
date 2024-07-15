@@ -12,7 +12,7 @@
 body {
     padding: 0;
     margin: 0;
-    background-image: url(./asset/bg.png);
+    background-image: url(./asset/bg.jpeg);
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-position: center;
@@ -49,6 +49,7 @@ button:active {
 #title {
     text-align: center;
     font-size: 180%;
+    text-shadow: .1em .1em 0 hsla(0, 0%, 0%, 0.507);
 }
 
 #signin-option {
@@ -122,9 +123,9 @@ button:active {
 #reg_form input {
     padding: 10px 10px;
     margin: 10px 0px;
-    border: none;
-    border-bottom: 1px solid #393b4063;
-    background-color: #f1ede9;
+    background-color: transparent;
+    border: 1px solid rgba(128, 128, 128, 0.233);
+    border-radius: 8px;
     outline: none;
     color: black;
     transition: 0.5s;
