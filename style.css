@@ -68,7 +68,7 @@ button:active {
 #alert-login {
     width: 100%;
     background-color: rgb(255, 120, 120);
-    border-radius: 5px;
+    border-radius: 3px;
     box-sizing: border-box;
     display: none;
 }
@@ -89,7 +89,7 @@ button:active {
 #dialog-box {
     position: absolute;
     width: 100%;
-    background-color: rgba(0, 0, 0, 0.63);
+    background-color: rgba(0, 0, 0, 0.377);
     box-sizing: border-box;
     z-index: 1;
     transition: 0.5s ease-in-out;
@@ -112,10 +112,10 @@ button:active {
 #reg_form {
     display: flex;
     flex-direction: column;
-    padding: 20px;
+    padding: 10px 20px;
     backdrop-filter: blur(50px);
     background-color: #f1ede9;
-    border-radius: 10px;
+    border-radius: 6px;
     box-shadow: rgba(100, 100, 111, 0.555) 0px 7px 29px 0px;
 }
 
@@ -125,7 +125,7 @@ button:active {
     margin: 10px 0px;
     background-color: transparent;
     border: 1px solid rgba(128, 128, 128, 0.233);
-    border-radius: 8px;
+    border-radius: 5px;
     outline: none;
     color: black;
     transition: 0.5s;
@@ -143,7 +143,7 @@ button:active {
     background-color: #393b40;
     color: #ffd591;
     border: none;
-    border-radius: 10px;
+    border-radius: 5px;
     transition: 0.4s;
 }
 

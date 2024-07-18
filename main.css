@@ -180,6 +180,7 @@ h3 {
 #desc {
     font-size: 100%;
     color: white;
+    width: 100%;
 }
 
 #add-post-box {
@@ -242,11 +243,17 @@ h3 {
 }
 
 
-@media screen and (max-width: 720px) {
+@media screen and (max-width: 1082px) {
     .mobile {
         display: none;
     }
 
+    #opt-link {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 768px) {
     #post-box {
         width: 100%;
         padding: 0 10px;
@@ -255,9 +262,5 @@ h3 {
 
     #add-post-box {
         width: 100%
-    }
-
-    #opt-link {
-        display: none;
     }
 }

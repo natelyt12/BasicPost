@@ -67,7 +67,7 @@ function validateForm(submit) {
   if (CheckUS(), CheckPass(), CheckRepass() == false) {
     console.log(CheckUS(), CheckPass(), CheckRepass())
     return false
-  } else {
+  } else if (localStorage.getItem(getInput().username) == null) {
     let acc = [
       {
         name: getInput().username,
@@ -80,7 +80,13 @@ function validateForm(submit) {
     localStorage.setItem(getInput().username, accify)
 
     toggleDialog("Đăng ký thành công, hãy đăng nhập bằng tài khoản của bạn!")
+
     toggleSlide()
+  } else {
+    toggleDialog("Tên người dùng đã được sử dụng")
+    document.getElementById("alert").style.display = "block"
+    document.getElementById("errorText").innerText = "Tên người dùng đã được sử dụng"
+
   }
 }
 
@@ -123,7 +129,7 @@ function CheckRepass() {
   }
 }
 
-
+// Login
 function login() {
   event.preventDefault()
 
